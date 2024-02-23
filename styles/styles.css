@@ -6,5 +6,14 @@ input {
     padding: 10px ;
     float: left;
     font-size: 16px;
+}
 
+button {
+    margin : 0;
+    border : none;
+    border-radius: 0;
+    width: 10%;
+    padding: 16px ;
+    float: left;
+    font-size: 16px;
 }
