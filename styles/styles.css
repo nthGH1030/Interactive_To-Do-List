@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 input {
     margin : 0;
     border : none;
@@ -12,8 +16,15 @@ button {
     margin : 0;
     border : none;
     border-radius: 0;
-    width: 10%;
-    padding: 16px ;
+    width: 15%;
+    padding: 10px ;
     float: left;
     font-size: 16px;
+}
+
+.header {
+    background-color: #f44336;
+    padding: 50px;
+    color: white;
+    text-align: center;
 }
