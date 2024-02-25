@@ -8,6 +8,7 @@ function createCloseButton(){
     .forEach((listItem) => {
         const button = document.createElement('button');
         button.className = "close";
+        button.textContent = "\u00D7";
         button.addEventListener('click', () => {
             console.log('clicked');
         });
