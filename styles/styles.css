@@ -49,6 +49,14 @@ ul li {
     transition: 0.2s;
 }
 
+
+  /* Style checked item*/
+  ul li.checked {
+    background: #888;
+    color: #fff;
+    text-decoration: line-through;
+  }
+
 /* Style the close button */
 .close {
     background: #eee;
