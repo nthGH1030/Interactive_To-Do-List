@@ -1,6 +1,8 @@
-const list = document.querySelectorAll("li")
+function RenderTaskList(){
+    const list = document.querySelectorAll("li")
 .forEach((listItem) => {
 
+    const button = CreateCloseButton(listItem);
     //checked the listitem when clicked
     listItem.addEventListener('click', () => {
         console.log('lisitem clicked');
@@ -17,20 +19,24 @@ const list = document.querySelectorAll("li")
         }
     });
 
-    //Hide the item when clicking close button
-    const button = document.createElement('button');
-    button.className = "close";
-    button.textContent = "\u00D7";
-    button.addEventListener('click', () => {
-        listItem.style.display = "none";
-
-    });
-    listItem.appendChild(button);
 })
+}
+
+function CreateCloseButton(listItem){
+        //Hide the item when clicking close button
+        const button = document.createElement('button');
+        button.className = "close";
+        button.textContent = "\u00D7";
+        button.addEventListener('click', () => {
+            listItem.style.display = "none";
     
+        });
+        listItem.appendChild(button);
 
+        return button
+}
 
-
+    
 //create item when clicking "add" button
 function AddTask(){
     //create a new list item 
@@ -50,7 +56,12 @@ function AddTask(){
     else{
         //Append to the existing list
         document.querySelector("#myUL").appendChild(list);
+        //create close button
+        RenderTaskList();
+
     }
     
     
 }
+
+RenderTaskList();
