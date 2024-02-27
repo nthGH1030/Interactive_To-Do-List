@@ -54,12 +54,12 @@ ul li:hover{
 }
 
 
-/* Style checked item*/
+/* When clicked on, add a background color and strike out text */
 ul li.checked {
-background: #888;
-color: #fff;
-text-decoration: line-through;
-}
+    background: #888;
+    color: #fff;
+    text-decoration: line-through;
+  }
 
 /* Style the close button */
 .close {
@@ -80,4 +80,5 @@ text-decoration: line-through;
 
 .close-checked{
     background: #888;
+    color: #fff;
 }

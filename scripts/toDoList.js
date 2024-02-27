@@ -6,23 +6,38 @@ function createCloseButton(){
 
     const list = document.querySelectorAll("li")
     .forEach((listItem) => {
+
+        //checked the listitem & button when clicked
+        listItem.addEventListener('click', () => {
+            console.log('lisitem clicked');
+            listItem.classList.toggle('checked');
+
+            if(listItem.classList.contains("checked"))
+            {
+                button.classList.add("close-checked");
+            }
+            else
+            {
+                button.classList.remove("close-checked");
+            }
+        });
+
+        //Hide the item when clicking close button
         const button = document.createElement('button');
         button.className = "close";
         button.textContent = "\u00D7";
         button.addEventListener('click', () => {
-            console.log('clicked');
+            console.log('checked');
+
         });
+
         listItem.appendChild(button);
 
-        if(listItem.classList.contains("checked"))
-        {
-            button.classList.add("close-checked");
-        }
-        
-        //listItem.insertAdjacentElement('afterend', button);
+  
+
     })
     
-    //console.log(list);
 }
 
 createCloseButton();
+
