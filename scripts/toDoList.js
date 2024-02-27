@@ -7,11 +7,12 @@ function createCloseButton(){
     const list = document.querySelectorAll("li")
     .forEach((listItem) => {
 
-        //checked the listitem & button when clicked
+        //checked the listitem when clicked
         listItem.addEventListener('click', () => {
             console.log('lisitem clicked');
             listItem.classList.toggle('checked');
-
+            
+            //handle the close button
             if(listItem.classList.contains("checked"))
             {
                 button.classList.add("close-checked");
@@ -27,7 +28,7 @@ function createCloseButton(){
         button.className = "close";
         button.textContent = "\u00D7";
         button.addEventListener('click', () => {
-            console.log('checked');
+            listItem.style.display = "none";
 
         });
 
