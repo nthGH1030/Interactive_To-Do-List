@@ -13,6 +13,11 @@ function createCloseButton(){
             console.log('clicked');
         });
         listItem.appendChild(button);
+
+        if(listItem.classList.contains("checked"))
+        {
+            button.classList.add("close-checked");
+        }
         
         //listItem.insertAdjacentElement('afterend', button);
     })
