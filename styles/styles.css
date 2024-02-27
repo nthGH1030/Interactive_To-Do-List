@@ -48,14 +48,18 @@ ul li {
     font-size: 18px;
     transition: 0.2s;
 }
+/*change color while hover*/
+ul li:hover{
+    background: #ddd;
+}
 
 
-  /* Style checked item*/
-  ul li.checked {
-    background: #888;
-    color: #fff;
-    text-decoration: line-through;
-  }
+/* Style checked item*/
+ul li.checked {
+background: #888;
+color: #fff;
+text-decoration: line-through;
+}
 
 /* Style the close button */
 .close {
@@ -73,3 +77,7 @@ ul li {
     background-color: #f44336;
     color: white;
   }
+
+.close-checked{
+    background: #888;
+}
