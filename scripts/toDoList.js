@@ -1,22 +1,23 @@
 function RenderTaskList(){
     const list = document.querySelectorAll("li")
-.forEach((listItem) => {
+    .forEach((listItem) => {
 
-    const button = CreateCloseButton(listItem);
-    //checked the listitem when clicked
-    listItem.addEventListener('click', () => {
-        console.log('lisitem clicked');
-        listItem.classList.toggle('checked');
+        const button = CreateCloseButton(listItem);
+
+        //check the listitem when clicked
+        listItem.addEventListener('click', () => {
+            console.log('lisitem clicked');
+            listItem.classList.toggle('checked');
         
-        //handle the close button
-        if(listItem.classList.contains("checked"))
-        {
-            button.classList.add("close-checked");
-        }
-        else
-        {
-            button.classList.remove("close-checked");
-        }
+            //handle the close button
+            if(listItem.classList.contains("checked"))
+            {
+                button.classList.add("close-checked");
+            }
+            else
+            {
+                button.classList.remove("close-checked");
+            }
     });
 
 })
