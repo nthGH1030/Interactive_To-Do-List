@@ -89,21 +89,33 @@ function draggableElement(){
             
         })
     })
-    
-
     //implement make dragging element fit in the correct sorting order
     /*
     if the return is not null, insert the draggable before the element
     else
     insert the draggable at the end.
-    /*
+    */
+    draggables.forEach((draggable) => {
+        draggable.addEventListener('dragover' , e => {
+            const draggingYcoordinate = e.clientY;
+            getDragAfterElement(container, draggingYcoordinate);
+        })
+    })
+    
 }
 
 function getDragAfterElement(container , y) {
 
     //The target of this function is to determine which element is after the dragging element
 
-    //put all draggable element into an array
+    //put all draggable element into an array which we are not currently dragging
+    const draggableElements = [...document.querySelectorAll('.draggable:not(.dragging)')];
+    draggableElements.forEach((draggableElement)=> {
+        const rect = draggableElement.getBoundingClientRect();
+        //get the middle line of the rect
+        const mid = (rect.top - rect.bottom) / 2;
+        //check the closest element
+    })
 
     /*Go through each array element, get the centre point of their coordinate
     , compare it with the draggable's coordinate , return the closest element
