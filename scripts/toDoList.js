@@ -66,3 +66,49 @@ function AddTask(){
 }
 
 RenderTaskList();
+
+
+function draggableElement(){
+    //get the draggable elememt
+    const draggables = document.querySelectorAll(".draggable");
+    //get the container element
+    const container = document.querySelectorAll(".container");
+    //add event listener to draggable for dragstart 
+    draggables.forEach((draggable) => {
+        draggable.addEventListener('dragstart' , () => {
+            
+            //implement fading effect for draggable 
+            draggable.classList.add('dragging');
+        })
+    })
+    //add event listener to draggable to dragend
+    draggables.forEach((draggable) => {
+        draggable.addEventListener('dragend' , () => {
+            //remove the fading effect
+            draggable.classList.remove('dragging');
+            
+        })
+    })
+    
+
+    //implement make dragging element fit in the correct sorting order
+    /*
+    if the return is not null, insert the draggable before the element
+    else
+    insert the draggable at the end.
+    /*
+}
+
+function getDragAfterElement(container , y) {
+
+    //The target of this function is to determine which element is after the dragging element
+
+    //put all draggable element into an array
+
+    /*Go through each array element, get the centre point of their coordinate
+    , compare it with the draggable's coordinate , return the closest element
+    that is right below the draggable
+    */
+}
+
+draggableElement();
