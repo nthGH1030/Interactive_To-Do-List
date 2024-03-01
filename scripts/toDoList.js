@@ -72,7 +72,7 @@ function draggableElement(){
     //get the draggable elememt
     const draggables = document.querySelectorAll(".draggable");
     //get the container element
-    const container = document.querySelectorAll(".container");
+    const containers = document.querySelectorAll(".container");
     //add event listener to draggable for dragstart 
     draggables.forEach((draggable) => {
         draggable.addEventListener('dragstart' , () => {
@@ -95,32 +95,56 @@ function draggableElement(){
     else
     insert the draggable at the end.
     */
-    draggables.forEach((draggable) => {
-        draggable.addEventListener('dragover' , e => {
+    containers.forEach((container) => {
+        container.addEventListener('dragover' , e => {
             const draggingYcoordinate = e.clientY;
-            getDragAfterElement(container, draggingYcoordinate);
+            const elementAfter = getDragAfterElement(container, draggingYcoordinate);
+            
+            const dragging = document.querySelector('.dragging');
+            if(elementAfter == null)
+            {
+                container.appendChild(dragging);
+            }
+            else
+            {
+                container.insertBefore(dragging, elementAfter);
+            }
         })
     })
     
 }
 
-function getDragAfterElement(container , y) {
+function getDragAfterElement(container, y) {
 
     //The target of this function is to determine which element is after the dragging element
 
     //put all draggable element into an array which we are not currently dragging
-    const draggableElements = [...document.querySelectorAll('.draggable:not(.dragging)')];
+
+    let closestElement = null;
+    let closestOffest = Number.NEGATIVE_INFINITY;
+
+    const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')];
+
     draggableElements.forEach((draggableElement)=> {
         const rect = draggableElement.getBoundingClientRect();
-        //get the middle line of the rect
-        const mid = (rect.top - rect.bottom) / 2;
-        //check the closest element
+        //get the middle coordinate of the rect
+        const offset = y - rect.top - rect.height / 2;
+        //console.log(offset);
+
+        //check the closest
+        //The offset should be negative -> its in front of the draggable
+        //The offset should be the closestOffest than all other draggable 
+        if(offset < 0 && offset > closestOffest)
+        {
+            //set the closestElement to be the draggable element
+            closestElement = draggableElement;
+            //set the offset for reference only
+            closestOffest = offset;
+        }
+
     })
 
-    /*Go through each array element, get the centre point of their coordinate
-    , compare it with the draggable's coordinate , return the closest element
-    that is right below the draggable
-    */
+    return closestElement;
 }
 
 draggableElement();
