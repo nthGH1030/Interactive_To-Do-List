@@ -4,19 +4,20 @@
         <link rel="stylesheet" href = "styles/styles.css">
     </head>
     <body>
-        <div id="'ToDoDiv" class = "header">
+        <div id="ToDoDiv" class = "header">
             <h2>My To Do List</h2>
             <input type = "text" id = "myInput" placeholder = "Title...">
             <button onclick = "AddTask()" class = "AddTask" >Add</button> 
         </div>
-
+        
         <ul id = "myUL">
-            <li>Hit the gym</li>
-            <li>Pay Bills</li>
-            <li>Meet George</li>
-            <li>Buy eggs</li>
-            <li>Read a book</li>
-            <li>Organize office</li>
+            <div class = "container">
+            <li class = "draggable" draggable = "true" >Hit the gym </li>
+            <li class = "draggable" draggable = "true" >Pay Bills</li>
+            <li class = "draggable" draggable = "true" >Clean the house</li>
+            </div>
+
+
         </ul>
 
         <div class = "container">

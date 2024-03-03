@@ -1,12 +1,12 @@
 function RenderTaskList(){
-    const list = document.querySelectorAll("li")
+    document.querySelectorAll("li")
     .forEach((listItem) => {
 
         const button = CreateCloseButton(listItem);
 
         //check the listitem when clicked
         listItem.addEventListener('click', () => {
-            console.log('lisitem clicked');
+            //console.log('lisitem clicked');
             listItem.classList.toggle('checked');
         
             //handle the close button
@@ -18,14 +18,16 @@ function RenderTaskList(){
             {
                 button.classList.remove("close-checked");
             }
-    });
 
-})
+        });
+    })
+    draggableElement();
 }
 
 function CreateCloseButton(listItem){
         //Hide the item when clicking close button
         const button = document.createElement('button');
+
         button.className = "close";
         button.textContent = "\u00D7";
         button.addEventListener('click', () => {
@@ -48,7 +50,11 @@ function AddTask(){
     //set the new element value with the user input, append it to the list item
     const newListItem = document.createTextNode(userInput);
     list.appendChild(newListItem);
-
+    //Add draggable function
+    list.classList.add("draggable");
+    list.setAttribute("draggable" , true);
+           
+    
     //handle exception and append it into the eexisting list
     if (userInput === "")
     {
@@ -62,10 +68,10 @@ function AddTask(){
 
     }
     
-    
 }
 
-RenderTaskList();
+
+
 
 
 function draggableElement(){
@@ -76,7 +82,6 @@ function draggableElement(){
     //add event listener to draggable for dragstart 
     draggables.forEach((draggable) => {
         draggable.addEventListener('dragstart' , () => {
-            
             //implement fading effect for draggable 
             draggable.classList.add('dragging');
         })
@@ -138,7 +143,7 @@ function getDragAfterElement(container, y) {
         {
             //set the closestElement to be the draggable element
             closestElement = draggableElement;
-            //set the offset for reference only
+            //update the closesetOffset to ready for next loop
             closestOffest = offset;
         }
 
@@ -147,4 +152,6 @@ function getDragAfterElement(container, y) {
     return closestElement;
 }
 
-draggableElement();
+
+
+RenderTaskList();
