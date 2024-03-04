@@ -5,34 +5,36 @@ function RenderTaskList(){
     const addTaskbtn = document.querySelector(".AddTask");
     addTaskbtn.addEventListener('click' , () => {
         AddTask(container)
+        //Newly added task cannot be checked, next up make checked a separate function
     });
 
     //Handle the existing list
     document.querySelectorAll("li")
     .forEach((listItem) => {
-
         const button = CreateCloseButton(listItem);
-
         //check the listitem when clicked
         listItem.addEventListener('click', () => {
-            //console.log('lisitem clicked');
-            listItem.classList.toggle('checked');
-        
-            //handle the close button
-            if(listItem.classList.contains("checked"))
-            {
-                button.classList.add("close-checked");
-            }
-            else
-            {
-                button.classList.remove("close-checked");
-            }
-
+            CheckTask(listItem, button)
         });
     })
 
-
     draggableElement();
+}
+
+function CheckTask(listItem, button) {
+
+    listItem.classList.toggle('checked');
+        
+    //handle the close button
+    if(listItem.classList.contains("checked"))
+    {
+        button.classList.add("close-checked");
+    }
+    else
+    {
+        button.classList.remove("close-checked");
+    }
+
 }
 
 function CreateCloseButton(listItem){
@@ -75,11 +77,15 @@ function AddTask(container){
         list.setAttribute("draggable" , true);
         
         //Add close button
-        CreateCloseButton(list);
+        const button = CreateCloseButton(list);
         //Append to the existing list
         document.querySelector("#myUL").appendChild(list);
         container.appendChild(list);
- 
+
+        list.addEventListener('click', () =>{
+            CheckTask(list, button)
+        })
+        draggableElement();
     }
 }
 
