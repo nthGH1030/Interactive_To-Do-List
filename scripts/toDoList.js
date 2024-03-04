@@ -1,4 +1,13 @@
 function RenderTaskList(){
+
+    //handle AddTask Button
+    const container = document.querySelector(".container");
+    const addTaskbtn = document.querySelector(".AddTask");
+    addTaskbtn.addEventListener('click' , () => {
+        AddTask(container)
+    });
+
+    //Handle the existing list
     document.querySelectorAll("li")
     .forEach((listItem) => {
 
@@ -21,6 +30,8 @@ function RenderTaskList(){
 
         });
     })
+
+
     draggableElement();
 }
 
@@ -41,33 +52,35 @@ function CreateCloseButton(listItem){
 
     
 //create item when clicking "add" button
-function AddTask(){
-    //create a new list item 
-    const list = document.createElement("li");
+function AddTask(container){
+    
     //get userinput
     const userInput = document.querySelector("#myInput").value;
-    //console.log(userInput);
-    //set the new element value with the user input, append it to the list item
-    const newListItem = document.createTextNode(userInput);
-    list.appendChild(newListItem);
-    //Add draggable function
-    list.classList.add("draggable");
-    list.setAttribute("draggable" , true);
-           
-    
-    //handle exception and append it into the eexisting list
+
     if (userInput === "")
     {
         alert('Your input cannot be blank !');
+        
     }
-    else{
+    //handle exception and append it into the eexisting list
+    else
+    {
+        //create a new list item 
+        const list = document.createElement("li");
+        //set the new element value with the user input, append it to the list item
+        const newListItem = document.createTextNode(userInput);
+        list.appendChild(newListItem);
+        //Add draggable function
+        list.classList.add("draggable");
+        list.setAttribute("draggable" , true);
+        
+        //Add close button
+        CreateCloseButton(list);
         //Append to the existing list
         document.querySelector("#myUL").appendChild(list);
-        //create close button
-        RenderTaskList();
-
+        container.appendChild(list);
+ 
     }
-    
 }
 
 
