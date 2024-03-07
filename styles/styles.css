@@ -41,6 +41,7 @@ ul {
   }
 /* Style the list items */
 ul li {
+    list-style-type: none;
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;

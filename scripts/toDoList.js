@@ -5,7 +5,6 @@ function RenderTaskList(){
     const addTaskbtn = document.querySelector(".AddTask");
     addTaskbtn.addEventListener('click' , () => {
         AddTask(container)
-        //Newly added task cannot be checked, next up make checked a separate function
     });
 
     //Handle the existing list
@@ -21,6 +20,7 @@ function RenderTaskList(){
     draggableElement();
 }
 
+//handle checking of item
 function CheckTask(listItem, button) {
 
     listItem.classList.toggle('checked');
@@ -64,7 +64,7 @@ function AddTask(container){
         alert('Your input cannot be blank !');
         
     }
-    //handle exception and append it into the eexisting list
+    //handle exception and append it into the existing list
     else
     {
         //create a new list item 
