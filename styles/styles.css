@@ -54,6 +54,10 @@ ul li:hover{
     background: #ddd;
 }
 
+.HighlightBottom {
+    border-bottom: 10px solid red !important;
+}
+
 
 /* When clicked on, add a background color and strike out text */
 ul li.checked {

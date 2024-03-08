@@ -127,7 +127,13 @@ function draggableElement(){
             const dragging = document.querySelector('.dragging');
             if(elementAfter == null)
             {
+                //highlight the bottom line of the bottommost listitem
+                console.log(container.lastElementChild);
+
+                //container.lastElementChild.classList.toggle('HighlightBottom');
+
                 container.appendChild(dragging);
+                
             }
             else
             {
