@@ -103,6 +103,7 @@ function draggableElement(){
         draggable.addEventListener('dragstart' , () => {
             //implement fading effect for draggable 
             draggable.classList.add('dragging');
+            draggable.classList.add('HighlightBorder');
         })
     })
     //add event listener to draggable to dragend
@@ -110,7 +111,7 @@ function draggableElement(){
         draggable.addEventListener('dragend' , () => {
             //remove the fading effect
             draggable.classList.remove('dragging');
-            
+            draggable.classList.remove('HighlightBorder');
         })
     })
     //implement make dragging element fit in the correct sorting order
@@ -121,22 +122,21 @@ function draggableElement(){
     */
     containers.forEach((container) => {
         container.addEventListener('dragover' , e => {
+            e.preventDefault();
             const draggingYcoordinate = e.clientY;
             const elementAfter = getDragAfterElement(container, draggingYcoordinate);
             
             const dragging = document.querySelector('.dragging');
+            console.log(elementAfter);
             if(elementAfter == null)
             {
-                //highlight the bottom line of the bottommost listitem
-                console.log(container.lastElementChild);
-
-                //container.lastElementChild.classList.toggle('HighlightBottom');
-
+ 
                 container.appendChild(dragging);
                 
             }
             else
             {
+
                 container.insertBefore(dragging, elementAfter);
             }
         })
@@ -176,7 +176,6 @@ function getDragAfterElement(container, y) {
 
     return closestElement;
 }
-
 
 
 RenderTaskList();

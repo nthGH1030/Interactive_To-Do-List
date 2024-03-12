@@ -54,9 +54,11 @@ ul li:hover{
     background: #ddd;
 }
 
-.HighlightBottom {
-    border-bottom: 10px solid red !important;
+
+.HighlightBorder {
+  border: 10px solid blue !important;
 }
+
 
 
 /* When clicked on, add a background color and strike out text */
